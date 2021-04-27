@@ -1,8 +1,8 @@
-package com.xenabler.microservices.controller;
+package com.saraiyakush.microservices.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.xenabler.microservices.model.User;
-import com.xenabler.microservices.service.UserService;
+import com.saraiyakush.microservices.model.User;
+import com.saraiyakush.microservices.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

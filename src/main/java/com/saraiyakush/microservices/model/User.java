@@ -1,4 +1,4 @@
-package com.xenabler.microservices.model;
+package com.saraiyakush.microservices.model;
 
 import lombok.Getter;
 import lombok.Setter;

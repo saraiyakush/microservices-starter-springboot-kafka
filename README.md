@@ -11,9 +11,9 @@ A sample microservices starter project using Spring Boot and Apache Kafka as mes
 
 ### Microservices
 
-*   **User Service** (*Producer & Consumer*) -- Creates a user and publishes a message to `user-created` topic. Listens to `payment-activated` topic and activates the user.
-*   **Payment Service** (*Producer & Consumer*) -- Listens to `user-created` topic and adds user's default payment method. Activates a payment method and publishes a message to `payment-activated` topic.
-*   **Email Service** (*Consumer*) -- Listens to `user-created` and `user-activated` topics and sends email to the user.
+*   **User Service** (*Producer & Consumer*) &mdash; Creates a user and publishes a message to `user-created` topic. Listens to `payment-activated` topic and activates the user.
+*   **Payment Service** (*Producer & Consumer*) &mdash; Listens to `user-created` topic and adds user&apos;s default payment method. Activates a payment method and publishes a message to `payment-activated` topic.
+*   **Email Service** (*Consumer*) &mdash; Listens to `user-created` and `user-activated` topics and sends email to the user.
 
 ### Use Cases
 
@@ -22,7 +22,7 @@ A sample microservices starter project using Spring Boot and Apache Kafka as mes
     2.  Payment Service adds a default payment method of the user and marks it as `activated=false`.
     3.  Email Service sends an email to the user.
 2.  Payment activated
-    1.  Payment Service activates the user's payment.
+    1.  Payment Service activates the user&apos;s payment.
     2.  User Service marks the user as `activated=true`
     3.  Email Service sends an email to the user.
 

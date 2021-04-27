@@ -1,4 +1,4 @@
-package com.xenabler.microservices.model;
+package com.saraiyakush.microservices.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
