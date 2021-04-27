@@ -41,6 +41,39 @@ Run the application.
 3.  Verify user is activated
     1. `curl -X GET http://localhost:8080/users/{id}`
 
+### Project Structure
+
+***NOTE:** Even though the User Service, Payment Service and Email Service are in the same project, in a real world application, these services may be scattered across many servers.*
+
+```
+src
+├───main
+│   ├───java
+│   │   └───com
+│   │       └───xenabler
+│   │           └───microservices
+│   │               │   MicroservicesStarterKafkaApplication.java
+│   │               │
+│   │               ├───controller
+│   │               │       PaymentController.java
+│   │               │       UserController.java
+│   │               │
+│   │               ├───model
+│   │               │       Payment.java
+│   │               │       PaymentRepository.java
+│   │               │       User.java
+│   │               │       UserRepository.java
+│   │               │
+│   │               └───service
+│   │                       EmailService.java
+│   │                       PaymentService.java
+│   │                       UserService.java
+│   │
+│   └───resources
+│           application.yml
+```
+
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
