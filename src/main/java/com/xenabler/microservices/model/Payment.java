@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Payment {
     @Id
     private String id;
-    private String userId;
+    private String userId;      // This will not be a JPA mapping because technically each service will have its own set of tables
     private String paymentMethod;
     private Boolean activated;
 }

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.xenabler.microservices.model.User;
 import com.xenabler.microservices.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -19,7 +19,12 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User create(@RequestBody User user) throws JsonProcessingException {
-        return userService.createUser(user);
+    public ResponseEntity<User> create(@RequestBody User user) throws JsonProcessingException {
+        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> get(@PathVariable String id) {
+        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 }

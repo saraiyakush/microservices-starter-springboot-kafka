@@ -15,7 +15,9 @@ public class EmailService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "user-created", groupId = "user-event-email-consumer-group", containerFactory = "emailKafkaListenerContainerFactory")
+    @KafkaListener(topics = {"user-created", "user-activated"},
+            groupId = "email-service-consumer-group",
+            containerFactory = "emailKafkaListenerContainerFactory")
     public void consumeUserCreated(String message) throws JsonProcessingException {
         User user = objectMapper.readValue(message, User.class);
         log.info("Email sent to user {}", user.getFirstName());
