@@ -18,7 +18,7 @@ A sample microservices starter project using Spring Boot and Apache Kafka as mes
 ### Use Cases
 
 1.  User created
-    1.  User Service created a new user and marks the user as `activated=false`.
+    1.  User Service creates a new user and marks the user as `activated=false`.
     2.  Payment Service adds a default payment method of the user and marks it as `activated=false`.
     3.  Email Service sends an email to the user.
 2.  Payment activated
