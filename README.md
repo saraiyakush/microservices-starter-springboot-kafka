@@ -16,7 +16,7 @@ A sample microservices starter project using Spring Boot and Apache Kafka as mes
 *   **Email Service** (*Consumer*) &mdash; Listens to `user-created` and `user-activated` topics and sends email to the user.
 
 | **Service**         	| **Publishes**                                            	| **Consumes**                                        	|
-|---------------------	|----------------------------------------------------------	|-----------------------------------------------------	|
+|:--------------------	|:---------------------------------------------------------	|:----------------------------------------------------	|
 | **User Service**    	| `user-created`</br> `user-activated`</br> `user-deleted` 	| `payment-activated`</br> `create-user-email-failed` 	|
 | **Payment Service** 	| `payment-activated`                                      	| `user-created`</br> `user-deleted`                  	|
 | **Email Service**   	| `create-user-email-failed`                               	| `user-created`</br> `user-activated`                	|
