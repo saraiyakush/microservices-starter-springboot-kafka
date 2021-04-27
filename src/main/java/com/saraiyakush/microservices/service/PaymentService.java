@@ -56,4 +56,13 @@ public class PaymentService {
         kafkaTemplate.send(TOPIC_PAYMENT_ACTIVATED, objectMapper.writeValueAsString(payment));
         log.info("Payment activated for user {}", payment.getUserId());
     }
+
+    @KafkaListener(topics = "user-deleted",
+            groupId = "payment-service-consumer-group",
+            containerFactory = "paymentKafkaListenerContainerFactory")
+    public void deletePayment(String message) throws JsonProcessingException {
+        User user = objectMapper.readValue(message, User.class);
+        paymentRepository.deleteAll(paymentRepository.findAllByUserId(user.getId()));
+        log.info("Payments deleted for user {}", user.getId());
+    }
 }

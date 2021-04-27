@@ -18,4 +18,7 @@ public class User {
     private String firstName;
     private String lastName;
     private Boolean activated;
+
+    // This field has nothing to do with User object, but is used by Email Service to indicate a failure and demonstrate how to do rollbacks
+    private Boolean failure;
 }

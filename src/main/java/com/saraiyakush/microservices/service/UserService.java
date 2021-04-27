@@ -19,6 +19,7 @@ public class UserService {
 
     private static final String TOPIC_USER_CREATED = "user-created";
     private static final String TOPIC_USER_ACTIVATED = "user-activated";
+    private static final String TOPIC_USER_DELETED = "user-deleted";
 
     private final UserRepository userRepository;
 
@@ -61,5 +62,19 @@ public class UserService {
 
     public User getUser(String id) {
         return userRepository.findById(id).get();
+    }
+
+    @KafkaListener(topics = "create-user-email-failed",
+            groupId = "user-service-consumer-group",
+            containerFactory = "userKafkaListenerContainerFactory")
+    public void consumeEmailFailed(String message) throws JsonProcessingException {
+        User user = objectMapper.readValue(message, User.class);
+
+        // Delete the user
+        userRepository.delete(userRepository.findById(user.getId()).get());
+
+        // Publish user deleted event
+        kafkaTemplate.send(TOPIC_USER_DELETED, objectMapper.writeValueAsString(user));
+        log.info("User deleted");
     }
 }
