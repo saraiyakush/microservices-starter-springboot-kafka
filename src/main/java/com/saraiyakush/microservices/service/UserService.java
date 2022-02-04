@@ -47,7 +47,7 @@ public class UserService {
     @KafkaListener(topics = "payment-activated",
             groupId = "user-service-consumer-group",
             containerFactory = "userKafkaListenerContainerFactory")
-    public void consumeUserCreated(String message) throws JsonProcessingException {
+    public void consumePaymentActivated(String message) throws JsonProcessingException {
         Payment payment = objectMapper.readValue(message, Payment.class);
 
         // Activate the user
